@@ -56,15 +56,15 @@ const ScheduleSetup = () => {
 
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">
+      <h2 className="text-center text-2xl font-bold mb-4">
         {" "}
         Subject and Weekly schedule Setup
       </h2>
       {/* subject input */}
 
-      <div className="flex gap-2 mb-6">
+      <div className="flex flex-col gap-2 mb-6 md:flex-row">
         <input
-          className="border px-4 py-2 rounded w-full"
+          className="border px-4 py-2 rounded overflow-hidden md: w-full md:basis-2/3"
           type="text"
           placeholder="Enter New Subject (e.g. computer Network)"
           value={newSubject}
@@ -72,7 +72,7 @@ const ScheduleSetup = () => {
           onKeyDown={(e) => e.key === "Enter" && addSubject()}
         />
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 md:basis-1/3"
           onClick={addSubject}
         >
           Add
@@ -84,12 +84,12 @@ const ScheduleSetup = () => {
       {daysOfWeek.map((day) => (
         <div key={day} className="mb-4">
           <h3 className="font-semibold mb-2">{day}</h3>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-col flex-wrap gap-3 md:flex-row">
             {subjects.length === 0 ? (
               <p className="text-gray-500">Add Subjects to assign this day.</p>
             ) : (
               subjects.map((subject) => (
-                <label key={subject} className="flex items-center space-x-2">
+                <label key={subject} className="flex  items-center space-x-2 ">
                   <input
                     type="checkbox"
                     checked={(schedule[day] || []).includes(subject)}
