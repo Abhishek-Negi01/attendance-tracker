@@ -61,7 +61,7 @@ const EditAttendance = () => {
       }
     });
 
-    localStorage.setItem("attendence", JSON.stringify(attendence));
+    localStorage.setItem("attendence", JSON.stringify(attendance));
 
     alert("Attendence Updated..");
   };
@@ -74,7 +74,7 @@ const EditAttendance = () => {
         <input
           type="date"
           value={selectedDate}
-          onClick={(e) => setSelectedDate(e.target.value)}
+          onChange={(e) => setSelectedDate(e.target.value)}
           className="border rounded ml-2 p-1"
         />
       </label>
