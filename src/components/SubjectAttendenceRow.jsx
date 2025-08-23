@@ -16,8 +16,8 @@ const SubjectAttendenceRow = ({ subject, date, status, onChange }) => {
         <input
           type="radio"
           name={`{${subject}-${date}}`}
-          checked={status === true}
-          onChange={() => handleChange(true)}
+          checked={status === "present"}
+          onChange={() => handleChange("present")}
         />
         <span>Present</span>
       </label>
@@ -26,8 +26,8 @@ const SubjectAttendenceRow = ({ subject, date, status, onChange }) => {
         <input
           type="radio"
           name={`${subject}-${date}`}
-          checked={status === false}
-          onChange={() => handleChange(false)}
+          checked={status === "absent"}
+          onChange={() => handleChange("absent")}
         />
         <span>Absent</span>
       </label>

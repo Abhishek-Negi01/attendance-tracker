@@ -8,26 +8,26 @@ const DailyAttendance = () => {
   const schedule = JSON.parse(localStorage.getItem("schedule")) || {};
   const todaySubjects = schedule[dayName] || [];
 
-  const [attendance, setAttendence] = useState({});
+  const [attendance, setAttendance] = useState({});
 
   const handleChange = (subject, value) => {
-    setAttendence((prev) => ({
+    setAttendance((prev) => ({
       ...prev,
       [subject]: value,
     }));
   };
 
-  const saveAttendence = () => {
-    const allData = JSON.parse(localStorage.getItem("attendence")) || {};
+  const saveAttendance = () => {
+    const allData = JSON.parse(localStorage.getItem("attendance")) || {};
     allData[dateKey] = attendance;
-    localStorage.setItem("attendence", JSON.stringify(allData));
-    alert("Attendence Saved..");
+    localStorage.setItem("attendance", JSON.stringify(allData));
+    alert("Attendance Saved..");
   };
 
   return (
     <div className="p-4 max-w-xl mx-auto ">
       <h2 className="text-center text-2xl">
-        Mark Attendence for {dayName} {dateKey}
+        Mark Attendance for {dayName} {dateKey}
       </h2>
       {todaySubjects.length === 0 ? (
         <p>No Classes Scheduled for Today..</p>
@@ -74,7 +74,7 @@ const DailyAttendance = () => {
 
       {todaySubjects.length > 0 && (
         <button
-          onClick={saveAttendence}
+          onClick={saveAttendance}
           className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         >
           Save Attendance

@@ -24,7 +24,7 @@ export function backfillAttendance(fromDateStr = "2025-07-15") {
     const subjects = schedule[dayName] || [];
     const blankAttendance = {};
     subjects.forEach((subject) => {
-      blankAttendance[subject] = false;
+      blankAttendance[subject] = "absent";
     });
 
     if (subjects.length > 0) {

@@ -13,7 +13,7 @@ const EditAttendance = () => {
 
   useEffect(() => {
     const schedule = JSON.parse(localStorage.getItem("schedule")) || {};
-    const attendence = JSON.parse(localStorage.getItem("attendence")) || {};
+    const attendance = JSON.parse(localStorage.getItem("attendance")) || {};
 
     const weekDay = new Date(selectedDate).toLocaleDateString("en-us", {
       weekday: "long",
@@ -22,13 +22,13 @@ const EditAttendance = () => {
     const subjects = schedule[weekDay] || [];
     setTodaySubjects(subjects);
 
-    const savedStatus = attendence[selectedDate] || {};
+    const savedStatus = attendance[selectedDate] || {};
 
     const initialStatus = {};
 
     subjects.forEach((subject) => {
       const value = savedStatus[subject];
-      if (value === true) {
+      if (value === "present") {
         initialStatus[subject] = "present";
       } else if (value === "cancelled") {
         initialStatus[subject] = "cancelled";
@@ -53,11 +53,11 @@ const EditAttendance = () => {
 
     Object.entries(subjectStatus).forEach(([subject, status]) => {
       if (status === "present") {
-        attendance[selectedDate][subject] = true;
+        attendance[selectedDate][subject] = "present";
       } else if (status === "cancelled") {
         attendance[selectedDate][subject] = "cancelled";
       } else {
-        attendance[selectedDate][subject] = false;
+        attendance[selectedDate][subject] = "absent";
       }
     });
 

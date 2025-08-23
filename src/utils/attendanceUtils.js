@@ -33,7 +33,7 @@ export function calculateAttendenceStats() {
 
       subjectStats[subject].total += 1;
 
-      if (status === true || status === "present") {
+      if (status === "present") {
         subjectStats[subject].present += 1;
       }
     });
