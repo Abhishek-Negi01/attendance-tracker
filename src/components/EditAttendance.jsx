@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SubjectAttendenceRow from "./SubjectAttendenceRow";
+import SubjectAttendanceRow from "./SubjectAttendenceRow";
 import { data } from "react-router-dom";
 
 const EditAttendance = () => {
@@ -48,7 +48,7 @@ const EditAttendance = () => {
   };
 
   const handleSave = () => {
-    const attendance = JSON.parse(localStorage.getItem("attendence")) || {};
+    const attendance = JSON.parse(localStorage.getItem("attendance")) || {};
     attendance[selectedDate] = {};
 
     Object.entries(subjectStatus).forEach(([subject, status]) => {
@@ -61,9 +61,9 @@ const EditAttendance = () => {
       }
     });
 
-    localStorage.setItem("attendence", JSON.stringify(attendance));
+    localStorage.setItem("attendance", JSON.stringify(attendance));
 
-    alert("Attendence Updated..");
+    alert("Attendance Updated..");
   };
 
   return (
@@ -81,7 +81,7 @@ const EditAttendance = () => {
 
       <div className="space-y-4">
         {todaySubjects.map((subject) => (
-          <SubjectAttendenceRow
+          <SubjectAttendanceRow
             subject={subject}
             date={selectedDate}
             status={subjectStatus[subject]}

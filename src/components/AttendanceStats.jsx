@@ -1,14 +1,14 @@
 // See stats & % calculations
 
 import React, { useEffect, useState } from "react";
-import { calculateAttendenceStats } from "../utils/attendanceUtils";
+import { calculateAttendanceStats } from "../utils/attendanceUtils";
 // import Table from "react-bootstrap/Table";
 
 const AttendanceStats = () => {
   const [data, setData] = useState({ overallPercentage: 0, stats: {} });
 
   useEffect(() => {
-    const result = calculateAttendenceStats();
+    const result = calculateAttendanceStats();
     setData(result);
   }, []);
 

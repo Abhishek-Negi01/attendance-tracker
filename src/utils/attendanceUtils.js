@@ -1,8 +1,8 @@
 // Calculation functions
 
-export function calculateAttendenceStats() {
+export function calculateAttendanceStats() {
   const schedule = JSON.parse(localStorage.getItem("schedule")) || {};
-  const attendence = JSON.parse(localStorage.getItem("attendence")) || {};
+  const attendence = JSON.parse(localStorage.getItem("attendance")) || {};
 
   const subjectStats = {};
 

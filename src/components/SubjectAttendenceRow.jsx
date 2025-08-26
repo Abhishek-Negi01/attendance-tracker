@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const SubjectAttendenceRow = ({ subject, date, status, onChange }) => {
+const SubjectAttendanceRow = ({ subject, date, status, onChange }) => {
   const handleChange = (newStatus) => {
     onChange(newStatus);
   };
@@ -45,4 +45,4 @@ const SubjectAttendenceRow = ({ subject, date, status, onChange }) => {
   );
 };
 
-export default SubjectAttendenceRow;
+export default SubjectAttendanceRow;
