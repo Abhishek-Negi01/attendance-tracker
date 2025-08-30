@@ -55,24 +55,24 @@ const ScheduleSetup = () => {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h2 className="text-center text-2xl font-bold mb-4">
+    <div className="p-6 max-w-5xl mx-auto">
+      <h2 className="text-center text-2xl md:text-3xl font-bold mb-6">
         {" "}
         Subject and Weekly schedule Setup
       </h2>
       {/* subject input */}
 
-      <div className="flex flex-col gap-2 mb-6 md:flex-row">
+      <div className="flex flex-col md:flex-row gap-3 mb-8 ">
         <input
-          className="border px-4 py-2 rounded overflow-hidden md: w-full md:basis-2/3"
+          className="border px-4 py-2 rounded-lg w-full focus:ring-2 focus:ring-blue-400 focus:outline-none overflow-hidden  md:basis-2/3"
           type="text"
-          placeholder="Enter New Subject (e.g. computer Network)"
+          placeholder="Enter New Subject (e.g. computer Networks)"
           value={newSubject}
           onChange={(e) => setNewSubject(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && addSubject()}
         />
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 md:basis-1/3"
+          className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition w-full md:w-auto  md:basis-1/3"
           onClick={addSubject}
         >
           Add
@@ -80,28 +80,38 @@ const ScheduleSetup = () => {
       </div>
 
       {/* Weekly schedule Assignment */}
-
-      {daysOfWeek.map((day) => (
-        <div key={day} className="mb-4">
-          <h3 className="font-semibold mb-2">{day}</h3>
-          <div className="flex flex-col flex-wrap gap-3 md:flex-row">
-            {subjects.length === 0 ? (
-              <p className="text-gray-500">Add Subjects to assign this day.</p>
-            ) : (
-              subjects.map((subject) => (
-                <label key={subject} className="flex  items-center space-x-2 ">
-                  <input
-                    type="checkbox"
-                    checked={(schedule[day] || []).includes(subject)}
-                    onChange={() => toggleSubjectForDay(day, subject)}
-                  />
-                  <span>{subject}</span>
-                </label>
-              ))
-            )}
+      <div className="space-y-6">
+        {daysOfWeek.map((day) => (
+          <div
+            key={day}
+            className="p-4 border rounded-lg shadow-sm hover:shadow-md transition "
+          >
+            <h3 className="font-semibold text-lg mb-3">{day}</h3>
+            <div className="flex flex-col sm:flex-row sm:flex-wrap  gap-3 ">
+              {subjects.length === 0 ? (
+                <p className="text-gray-500 text-sm">
+                  Add Subjects to assign this day.
+                </p>
+              ) : (
+                subjects.map((subject) => (
+                  <label
+                    key={subject}
+                    className="flex  items-center space-x-2 bg-gray-50 px-3 py-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                  >
+                    <input
+                      type="checkbox"
+                      checked={(schedule[day] || []).includes(subject)}
+                      onChange={() => toggleSubjectForDay(day, subject)}
+                      className="accent-blue-500"
+                    />
+                    <span>{subject}</span>
+                  </label>
+                ))
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

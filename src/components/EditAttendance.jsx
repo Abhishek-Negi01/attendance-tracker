@@ -69,7 +69,7 @@ const EditAttendance = () => {
   return (
     <div className="p-6 max-w-2xl mx-auto">
       <h1 className="text-center text-2xl font-bold mb-8">Edit Attendence</h1>
-      <label className="block mb-8 md:text-center">
+      <label className="block mb-8 text-center ">
         Enter Date :
         <input
           type="date"
