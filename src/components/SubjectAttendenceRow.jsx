@@ -8,37 +8,45 @@ const SubjectAttendanceRow = ({ subject, date, status, onChange }) => {
   };
 
   return (
-    <div className="border rounded p-3 m-2 shadow-sm flex   space-x-4 border-b flex-col ">
+    <div className="border rounded-lg p-4 m-2 shadow-sm bg-white flex flex-col">
       {/* <span className="w-24 font-medium">{date}</span> */}
-      <p className="font-semibold">{subject}</p>
+      {/* Subject Name */}
+      <p className="font-semibold text-lg mb-3">{subject}</p>
 
-      <div className="flex mt-4 space-x-4">
-        <label className="flex items-center space-x-2 ">
+      {/* Attendance Options */}
+      <div
+        className="flex flex-col sm:flex-row sm:items-center
+      sm:space-x-6 gap-3 "
+      >
+        <label className="flex items-center cursor-pointer space-x-2 ">
           <input
             type="radio"
             name={`{${subject}-${date}}`}
             checked={status === "present"}
             onChange={() => handleChange("present")}
+            className="accent-green-500"
           />
           <span>Present</span>
         </label>
 
-        <label className="flex items-center space-x-2">
+        <label className="flex items-center cursor-pointer space-x-2">
           <input
             type="radio"
             name={`${subject}-${date}`}
             checked={status === "absent"}
             onChange={() => handleChange("absent")}
+            className="accent-red-500"
           />
           <span>Absent</span>
         </label>
 
-        <label className="flex items-center space-x-2">
+        <label className="flex items-center cursor-pointer space-x-2">
           <input
             type="radio"
             name={`${subject}-${date}`}
             checked={status === "cancelled"}
             onChange={() => handleChange("cancelled")}
+            className="accent-yellow-500"
           />
           <span>Cancelled</span>
         </label>

@@ -10,6 +10,7 @@ const EditAttendance = () => {
 
   const [todaySubjects, setTodaySubjects] = useState([]);
   const [subjectStatus, setSubjectStatus] = useState({});
+  const [weekDay, setWeekDay] = useState("");
 
   useEffect(() => {
     const schedule = JSON.parse(localStorage.getItem("schedule")) || {};
@@ -18,6 +19,8 @@ const EditAttendance = () => {
     const weekDay = new Date(selectedDate).toLocaleDateString("en-us", {
       weekday: "long",
     });
+
+    setWeekDay(weekDay);
 
     const subjects = schedule[weekDay] || [];
     setTodaySubjects(subjects);
@@ -68,36 +71,70 @@ const EditAttendance = () => {
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-center text-2xl font-bold mb-8">Edit Attendence</h1>
-      <label className="block mb-8 text-center ">
-        Enter Date :
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => setSelectedDate(e.target.value)}
-          className="border rounded ml-2 p-1"
-        />
-      </label>
+      {/* Heading */}
+      <h1 className="text-center text-2xl md:text-3xl font-bold mb-8">
+        Edit Attendence
+      </h1>
 
-      <div className="space-y-4">
-        {todaySubjects.map((subject) => (
-          <SubjectAttendanceRow
-            subject={subject}
-            date={selectedDate}
-            status={subjectStatus[subject]}
-            onChange={(newStatus) => handleStatusChange(subject, newStatus)}
+      {/* Date Picker */}
+      <div className="flex justify-center mb-8">
+        <label className="flex flex-col sm:flex-row items-center gap-2 text-center">
+          <span className="font-medium">Select Date:</span>
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            className="border rounded-lg p-2 focus:outline-none focus-ring-2 focus:ring-blue-400"
           />
-        ))}
+        </label>
       </div>
 
-      <div className="flex justify-center">
-        <button
-          onClick={handleSave}
-          className=" w-full mt-6 bg-blue-500 text-white px-4 py-2  rounded hover:bg-blue-600 md:w-1/2"
-        >
-          Save Changes
-        </button>
-      </div>
+      {/* Subject Rows */}
+
+      {todaySubjects.length === 0 ? (
+        <div>
+          {/* <svg
+            className="w-12 h-12 text-yellow-500"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg> */}
+          <p className="text-center text-lg font-medium text-yellow-700">
+            No classes scheduled for {weekDay}.
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {todaySubjects.map((subject) => (
+            <SubjectAttendanceRow
+              key={subject}
+              subject={subject}
+              date={selectedDate}
+              status={subjectStatus[subject]}
+              onChange={(newStatus) => handleStatusChange(subject, newStatus)}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Save Button */}
+      {todaySubjects.length > 0 && (
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={handleSave}
+            className="w-full md:w-1/2 bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold shadow hover:bg-blue-600 transition"
+          >
+            Save Changes
+          </button>
+        </div>
+      )}
     </div>
   );
 };
