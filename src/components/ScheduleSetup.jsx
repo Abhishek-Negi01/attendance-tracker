@@ -56,15 +56,15 @@ const ScheduleSetup = () => {
 
   return (
     <div className="p-6 max-w-5xl mx-auto">
-      <h2 className="text-center text-2xl md:text-3xl font-bold mb-6">
-        {" "}
+      <h2 className="text-center text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+        {/* {" "} */}
         Subject and Weekly schedule Setup
       </h2>
       {/* subject input */}
 
       <div className="flex flex-col md:flex-row gap-3 mb-8 ">
         <input
-          className="border px-4 py-2 rounded-lg w-full focus:ring-2 focus:ring-blue-400 focus:outline-none overflow-hidden  md:basis-2/3"
+          className="border border-gray-300 dark:border-gray-600 px-4 py-2  rounded-lg w-full bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100  focus:ring-2 focus:ring-blue-400 focus:outline-none overflow-hidden  md:basis-2/3"
           type="text"
           placeholder="Enter New Subject (e.g. computer Networks)"
           value={newSubject}
@@ -84,19 +84,21 @@ const ScheduleSetup = () => {
         {daysOfWeek.map((day) => (
           <div
             key={day}
-            className="p-4 border rounded-lg shadow-sm hover:shadow-md transition "
+            className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm hover:shadow-md transition bg-white dark:bg-gray-800"
           >
-            <h3 className="font-semibold text-lg mb-3">{day}</h3>
+            <h3 className="font-semibold text-lg mb-3 text-gray-800 dark:text-gray-100">
+              {day}
+            </h3>
             <div className="flex flex-col sm:flex-row sm:flex-wrap  gap-3 ">
               {subjects.length === 0 ? (
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 dark:text-gray-400 text-sm">
                   Add Subjects to assign this day.
                 </p>
               ) : (
                 subjects.map((subject) => (
                   <label
                     key={subject}
-                    className="flex  items-center space-x-2 bg-gray-50 px-3 py-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                    className="flex  items-center space-x-2 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-gray-100  px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer transition"
                   >
                     <input
                       type="checkbox"

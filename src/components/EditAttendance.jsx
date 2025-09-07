@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaCalendarTimes } from "react-icons/fa";
 import SubjectAttendanceRow from "./SubjectAttendenceRow";
 import { data } from "react-router-dom";
 
@@ -72,19 +73,19 @@ const EditAttendance = () => {
   return (
     <div className="p-6 max-w-2xl mx-auto">
       {/* Heading */}
-      <h1 className="text-center text-2xl md:text-3xl font-bold mb-8">
+      <h1 className="text-center text-2xl md:text-3xl font-bold mb-8 dark:text-gray-100">
         Edit Attendence
       </h1>
 
       {/* Date Picker */}
       <div className="flex justify-center mb-8">
         <label className="flex flex-col sm:flex-row items-center gap-2 text-center">
-          <span className="font-medium">Select Date:</span>
+          <span className="font-medium dark:text-gray-200">Select Date:</span>
           <input
             type="date"
             value={selectedDate}
             onChange={(e) => setSelectedDate(e.target.value)}
-            className="border rounded-lg p-2 focus:outline-none focus-ring-2 focus:ring-blue-400"
+            className="border rounded-lg p-2 focus:outline-none focus-ring-2 focus:ring-blue-400 bg-white dark:bg-gray-800 border-gray-300  dark:border-gray-600 text-gray-900 dark:text-gray-100"
           />
         </label>
       </div>
@@ -92,21 +93,9 @@ const EditAttendance = () => {
       {/* Subject Rows */}
 
       {todaySubjects.length === 0 ? (
-        <div>
-          {/* <svg
-            className="w-12 h-12 text-yellow-500"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg> */}
-          <p className="text-center text-lg font-medium text-yellow-700">
+        <div className="flex flex-col items-center justify-center text-center py-6 space-y-3">
+          <FaCalendarTimes className="w-12 h-12 text-yellow-600 dark:text-yellow-400 " />
+          <p className=" text-lg font-medium text-yellow-700 dark:text-yellow-400">
             No classes scheduled for {weekDay}.
           </p>
         </div>

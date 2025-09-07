@@ -55,7 +55,7 @@ export function calculateAttendanceStats() {
       advice =
         canSkip > 0
           ? `You can miss ${canSkip} more class${canSkip > 1 ? `es` : ``}.`
-          : `You are exactly at 75%.`;
+          : `You are above or at 75%.`;
     } else {
       needAttend = Math.ceil((0.75 * total - present) / 0.25);
       advice = `You need to attend ${needAttend} class${
